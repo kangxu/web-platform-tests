@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>HTMLTableSectionElement Test: insertRow()</title>
+<link rel="author" title="Intel" href="http://www.intel.com/">
+<script src="/resources/testharness.js"></script>
+<script src="/resources/testharnessreport.js"></script>
+
+<table>
+  <tbody id="testBody">
+    <tr><td>ABCDEF</td></tr>
+  </tbody>
+</table>
+
+<script>
+
+var tbody = document.getElementById("testBody");
+
+test(function () {
+  tbody.insertRow(-1);
+  assert_equals(tbody.rows.length, 2);
+}, document.title);
+
+test(function () {
+  assert_throws("IndexSizeError", function () {
+    tbody.insertRow(-2);
+  });
+}, "Check if HTMLTableSectionElement.insertRow must throw an IndexSizeError exception if index is less than −1 or greater than the number of elements in the rows collection");
+
+</script>
+
+<div id ="log"></div>
